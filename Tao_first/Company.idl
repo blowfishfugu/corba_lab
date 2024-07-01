@@ -1,0 +1,34 @@
+module CompanyModule
+{
+  struct TimePoint
+  {
+    long long milliseconds_since_epoch; // unix_epoch
+  };
+
+  struct YearMonthDay
+  {
+    long year;
+    unsigned short month;
+    unsigned short day;
+  };
+
+  interface Person
+  {
+    attribute string firstname;
+    attribute string name;
+    attribute YearMonthDay birthday;
+    string FullName ();
+  };
+
+  interface Employee : Person
+  {
+    attribute double salary;
+    void payout ();
+  };
+
+  interface ImpFactory
+  {
+    Person CreatePerson ();
+    Employee CreateEmployee ();
+  };
+};
