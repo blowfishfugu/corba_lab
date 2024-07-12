@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // D:\gitRepos\ACE_TAO\TAO\TAO_IDL\be\be_codegen.cpp:631
 
-#ifndef _TAO_IDL_COMPANYS_ZXSU8H_CPP_
-#define _TAO_IDL_COMPANYS_ZXSU8H_CPP_
+#ifndef _TAO_IDL_COMPANYS_NL2RSW_CPP_
+#define _TAO_IDL_COMPANYS_NL2RSW_CPP_
 
 
 #include "CompanyS.h"

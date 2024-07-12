@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // D:\gitRepos\ACE_TAO\TAO\TAO_IDL\be\be_codegen.cpp:454
 
-#ifndef _TAO_IDL_COMPANYS_IEICBM_H_
-#define _TAO_IDL_COMPANYS_IEICBM_H_
+#ifndef _TAO_IDL_COMPANYS_FJRRIK_H_
+#define _TAO_IDL_COMPANYS_FJRRIK_H_
 
 #include /**/ "ace/pre.h"
 

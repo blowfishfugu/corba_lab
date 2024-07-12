@@ -6,12 +6,13 @@
     <TAO_ROOT>D:\gitRepos\ACE_TAO\TAO</TAO_ROOT>
   </PropertyGroup>
   <PropertyGroup>
-    <IntDir>$(SolutionDir)tmp\$(ProjectName)$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(Platform)\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(TAO_ROOT);$(ACE_ROOT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ACE_ROOT)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
