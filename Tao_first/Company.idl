@@ -30,5 +30,7 @@ module CompanyModule
   {
     Person CreatePerson ();
     Employee CreateEmployee ();
+    //init()
+    //oneway void shutdown()...
   };
 };
