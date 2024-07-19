@@ -52,6 +52,7 @@ public:
 	virtual void firstname(const char* firstname) override
 	{
 		_firstname =std::string(firstname);
+		std::cout << std::format("firstname set to: {}\n", _firstname);
 	}
 	virtual char* name() override
 	{
@@ -110,6 +111,7 @@ class MyFactory : public virtual POA_CompanyModule::ImpFactory
 	virtual ::CompanyModule::Person_ptr CreatePerson() override
 	{
 		MyPerson* person = new MyPerson(); //TODO: <- das kann nicht richtig sein
+		
 		return CompanyModule::Person::_duplicate(person->_this());
 	}
 	virtual ::CompanyModule::Employee_ptr CreateEmployee() override
@@ -178,16 +180,16 @@ int main(int argc, char** argv)
 		CosNaming::Name Name(1);
 		Name.length(1);
 		Name[0].id = CORBA::string_dup("MyFactory");
-		ns_context->bind(Name, pObj);
+		ns_context->rebind(Name, pObj);
 		
 		//TODO: separate Funktion try_resolve(ns_context, const char* name)
-		CORBA::Object_var tstResolve = ns_context->resolve(Name);
+		CORBA::Object_ptr tstResolve = ns_context->resolve(Name);
 		CompanyModule::ImpFactory_var iFactory=CompanyModule::ImpFactory::_narrow(tstResolve);
 		tstResolve = nullptr;
 
 		CompanyModule::Person_var person=iFactory->CreatePerson();
 		
-		ns_context->unbind(Name); //<- kann das jeder client?
+		//ns_context->unbind(Name); //<- kann das jeder client?
 	}
 	catch (CORBA::ORB::InvalidName exc) //TODO: welchen Typ wirft der timeout? InvalidName ist abgehandelt :)
 	{
@@ -195,9 +197,10 @@ int main(int argc, char** argv)
 	}
 
 	std::jthread runFor([&orb]() {
-		for (int i = 0; i < 5; ++i)
+		const int maxwait = 50000;
+		for (int i = 0; i < maxwait; ++i)
 		{
-			std::cout << std::format("shutdown in {} ..\n", 5 - i);
+			std::cout << std::format("shutdown in {} ..\n", maxwait - i);
 			std::this_thread::sleep_for(1s);
 		}
 		orb->shutdown(true);
