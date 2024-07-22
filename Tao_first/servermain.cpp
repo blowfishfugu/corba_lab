@@ -146,7 +146,7 @@ int main(int argc, char** argv)
 	/// + anhängen an den manager
 	//std::cout << ior << "\n";
 
-	MyFactory mainFactory;
+	MyFactory mainFactory; //new mainFactory?
 	PortableServer::Servant_var<MyFactory> activatable_servant = &mainFactory; //cast to Servant
 	PortableServer::ObjectId_var oid=poa->activate_object(activatable_servant.in());
 	
